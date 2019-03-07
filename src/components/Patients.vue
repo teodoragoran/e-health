@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <p>teodoraaaa ftw!</p>
-    <h3>Our patients</h3>
+    <h3 class="appname">Medical records</h3>
     <b-table
       hover
       :items="patients"
@@ -18,40 +17,46 @@
 
       <template slot="row-details" slot-scope="row">
         <b-card>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Full name:</b></b-col>
-            <b-col>{{ row.item.first_name }} {{ row.item.last_name }}</b-col>
+          <b-row class="text-center">
+            <b-col><img src="../assets/user.png" width="100px"/></b-col>
+            <b-col cols="8">
+              <b-col>
+                <h4 class="username">
+                  {{ row.item.first_name }} {{ row.item.last_name }}
+                </h4></b-col
+              >
+              <b-col>{{ row.item.email }}</b-col>
+              <b-col
+                ><i>{{ row.item.gender }}</i></b-col
+              >
+            </b-col>
           </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Email:</b></b-col>
-            <b-col>{{ row.item.email }}</b-col>
-          </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Gender:</b></b-col>
-            <b-col>{{ row.item.gender }}</b-col>
-          </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"><b>Diagnosis Code:</b></b-col>
-            <b-col>{{ row.item.diagnosis_code }}</b-col>
-          </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"
-              ><b>Diagnosis Description:</b></b-col
-            >
-            <b-col>{{ row.item.diagnosis_description }}</b-col>
-          </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"
-              ><b>Diagnosis Detailed:</b></b-col
-            >
-            <b-col>{{ row.item.diagnosis_description_detailed }}</b-col>
-          </b-row>
-          <b-row class="mb-2">
-            <b-col sm="3" class="text-sm-right"
-              ><b>Administered Treatment:</b></b-col
-            >
-            <b-col>{{ row.item.administered_drug_treatment }}</b-col>
-          </b-row>
+          <b-col cols="12">
+            <b-row> <h4>Diagnosis</h4> </b-row>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b> Code:</b></b-col>
+              <b-col class="text-sm-left">{{ row.item.diagnosis_code }}</b-col>
+            </b-row>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Description:</b></b-col>
+              <b-col class="text-sm-left">{{
+                row.item.diagnosis_description
+              }}</b-col>
+            </b-row>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right"><b>Detailes:</b></b-col>
+              <b-col class="text-sm-left">{{
+                row.item.diagnosis_description_detailed
+              }}</b-col>
+            </b-row>
+            <b-row class="mb-2"> <h4>Treatment</h4> </b-row>
+            <b-row>
+              <b-col sm="3" class="text-sm-right"><b> Administered:</b></b-col>
+              <b-col class="text-sm-left">{{
+                row.item.administered_drug_treatment
+              }}</b-col>
+            </b-row>
+          </b-col>
 
           <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
         </b-card>
@@ -115,6 +120,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.username {
+  color: #7e191b;
+  margin-top: 20px;
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -128,5 +137,10 @@ li {
 }
 a {
   color: #42b983;
+}
+.appname {
+  margin-bottom: 5%;
+  color: #7e191b;
+  text-transform: uppercase;
 }
 </style>
